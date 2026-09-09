@@ -1,0 +1,32 @@
+dataset: mrhisum
+batch_size: 64
+
+model: triplesumm-ranknet
+visual_dim: 1024
+text_dim: 768
+audio_dim: 768
+input_dim: 128
+hidden_dim: 192
+num_model_layers: 2
+num_mst_layers: 2
+num_cmf_layers: 2
+num_heads: 4
+dropout: 0.1
+window_size: [5, 15, 45, 0]
+
+learning_rate: 1.0e-4
+weight_decay: 1.0e-5
+optimizer: adamw
+scheduler: cosine
+num_epochs: 100
+patience: 10
+early_stop_metric: primary
+
+loss_type: pearson_ranknet
+combined_schedule: anchor
+combined_mse_weight: 1.0
+combined_pearson_weight: 0.35
+combined_ranknet_weight: 0.10
+num_pairs: 512
+min_gap: 0.1
+peak_top_frac: 0.15

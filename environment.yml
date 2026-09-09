@@ -1,0 +1,13 @@
+name: tsmd
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pytorch>=2.5,<3
+  - pytorch-cuda=12.1
+  - pip:
+      - -r requirements.txt

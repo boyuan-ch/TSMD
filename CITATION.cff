@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both TSMD and TripleSumm."
+title: "TSMD: Temporal-Stream Modality Dropout for Robust Video Highlight Detection"
+type: software
+license: MIT
+repository-code: "https://github.com/boyuan-ch/TSMD"
+url: "https://boyuan-ch.github.io/TSMD/"
+date-released: 2026-09-09
+authors:
+  - family-names: Cheng
+    given-names: Bo-Yuan
+  - family-names: Chen
+    given-names: Kuan-Yu
+  - family-names: Huang
+    given-names: Po-Han
+  - family-names: Li
+    given-names: Jeng-Lin
+  - family-names: Tsao
+    given-names: Yu
+  - family-names: Ding
+    given-names: Jian-Jiun
