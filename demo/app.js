@@ -232,7 +232,7 @@ function chartLayout(width, height) {
     margin,
     plotRight: width - margin.right,
     plotBottom: height - margin.bottom,
-    stripTop: height - margin.bottom + 8,
+    stripTop: height - margin.bottom + 27,
   };
 }
 
@@ -289,6 +289,7 @@ function drawAxes(width, layout) {
     context.lineTo(x + 0.5, layout.plotBottom + 5);
     context.stroke();
     context.fillStyle = "#6a6f73";
+    context.textAlign = second === 0 ? "left" : "center";
     context.fillText(formatTime(second), x, layout.plotBottom + 9);
   }
   context.restore();
@@ -473,10 +474,10 @@ function renderMetrics() {
   elements.metricStrip.replaceChildren();
   if (!metrics) return;
   const items = [
-    ["TripleSumm clean", metrics.triplesummClean.mAP15, true],
-    ["TripleSumm drop", metrics.triplesummDrop.mAP15, false],
-    ["TSMD-Mix clean", metrics.tsmdMixClean.mAP15, true],
-    ["TSMD-Mix drop", metrics.tsmdMixDrop.mAP15, false],
+    ["TripleSumm (Baseline) clean", metrics.triplesummClean.mAP15, true],
+    ["TripleSumm (Baseline) drop", metrics.triplesummDrop.mAP15, false],
+    ["TSMD-Mix (Ours) clean", metrics.tsmdMixClean.mAP15, true],
+    ["TSMD-Mix (Ours) drop", metrics.tsmdMixDrop.mAP15, false],
   ];
   for (const [label, value, clean] of items) {
     if (clean && !state.showClean) continue;
@@ -488,6 +489,7 @@ function renderMetrics() {
 
 function renderNavigation() {
   elements.demoTabs.replaceChildren();
+  elements.demoTabs.hidden = state.manifest.demos.length <= 1;
   for (const demo of state.manifest.demos) {
     const button = document.createElement("button");
     button.type = "button";
@@ -540,9 +542,9 @@ async function selectVideo(videoId) {
   elements.seekSlider.value = "0";
   elements.seekSlider.max = String(timelineEnd());
   elements.pageEyebrow.textContent = state.activeDemo.label;
-  elements.demoKicker.textContent = data.datasetVideoId ? `MoSu video ${data.datasetVideoId}` : "Current example";
-  elements.demoTitle.textContent = data.title || video.label;
-  elements.demoDescription.textContent = data.description || "";
+  elements.demoKicker.textContent = "Robustness example";
+  elements.demoTitle.textContent = video.label;
+  elements.demoDescription.textContent = "";
   renderMetrics();
   rebuildMeters();
   rebuildLegend();

@@ -9,23 +9,23 @@
       "dash": "solid"
     },
     "triplesumm_drop": {
-      "label": "TripleSumm drop",
+      "label": "TripleSumm (Baseline) drop",
       "color": "#39789b",
       "dash": "solid"
     },
     "tsmd_mix_drop": {
-      "label": "TSMD-Mix drop",
+      "label": "TSMD-Mix (Ours) drop",
       "color": "#c5523a",
       "dash": "solid"
     },
     "triplesumm_clean": {
-      "label": "TripleSumm clean",
+      "label": "TripleSumm (Baseline) clean",
       "color": "#76a9c2",
       "clean": true,
       "dash": "dashed"
     },
     "tsmd_mix_clean": {
-      "label": "TSMD-Mix clean",
+      "label": "TSMD-Mix (Ours) clean",
       "color": "#df8a70",
       "clean": true,
       "dash": "dashed"
@@ -1449,9 +1449,8 @@
       "good_state_map15_range_le_20": 1.0
     }
   },
-  "datasetVideoId": "kPR6",
-  "title": "kPR6 \u2014 50% independent temporal removal",
-  "description": "50% independent temporal removal, seed 42.",
+  "title": "Video 4",
+  "description": "",
   "metrics": {
     "triplesummClean": {
       "idealDemoRank": 4,

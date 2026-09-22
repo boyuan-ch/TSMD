@@ -1,46 +1,33 @@
 {
   "demos": [
     {
-      "id": "original",
-      "label": "Original demo",
-      "videos": [
-        {
-          "id": "ir9p",
-          "label": "ir9p",
-          "youtubeId": "N3iwNLIgtK0",
-          "rank": 1,
-          "path": "data/original/ir9p.json"
-        }
-      ]
-    },
-    {
       "id": "robustness",
       "label": "Robustness examples",
       "videos": [
         {
           "id": "7OfO",
-          "label": "7OfO",
+          "label": "Video 1",
           "path": "data/robustness/7OfO.json",
           "youtubeId": "PNw_tjt0Thw",
           "rank": 1
         },
         {
           "id": "VMzs",
-          "label": "VMzs",
+          "label": "Video 2",
           "path": "data/robustness/VMzs.json",
           "youtubeId": "g-FJSSzrbr0",
           "rank": 2
         },
         {
           "id": "IFlY",
-          "label": "IFlY",
+          "label": "Video 3",
           "path": "data/robustness/IFlY.json",
           "youtubeId": "aUT143gfbvU",
           "rank": 3
         },
         {
           "id": "kPR6",
-          "label": "kPR6",
+          "label": "Video 4",
           "path": "data/robustness/kPR6.json",
           "youtubeId": "vqAxHit7wlw",
           "rank": 4
