@@ -673,12 +673,19 @@ h2 {
   background: var(--independent);
 }
 
-.legend-drop {
+.legend-feature {
   width: 18px;
   height: 12px;
   margin-right: 7px;
-  background: color-mix(in srgb, var(--drop-color) 28%, transparent);
-  border: 1px solid color-mix(in srgb, var(--drop-color) 48%, transparent);
+  border: 1px solid var(--feature-color);
+}
+
+.legend-feature.is-available {
+  background: color-mix(in srgb, var(--feature-color) 22%, transparent);
+}
+
+.legend-feature.is-dropped {
+  background: color-mix(in srgb, var(--feature-color) 90%, transparent);
 }
 
 .chart-resize-handle {

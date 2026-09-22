@@ -6,7 +6,8 @@ video compares TripleSumm (Baseline) and TSMD-Mix (Ours) under clean and
 independent 50% modality drop.
 
 Clean-inference curves are dashed and can be hidden with the page toggle. The
-timeline's bottom rows show the visual, audio, and text drop masks.
+timeline's bottom rows show visual, audio, and text feature availability: a
+light modality color means available, while the darker color means dropped.
 
 Videos remain hosted by YouTube and their original uploaders. This directory
 contains no downloaded video, audio, subtitles, model checkpoints, or HDF5

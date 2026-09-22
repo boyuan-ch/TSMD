@@ -177,12 +177,14 @@ function rebuildLegend() {
     elements.chartLegend.append(item);
   }
   for (const row of state.data.dropRows || []) {
-    const item = document.createElement("span");
-    const block = document.createElement("i");
-    block.className = "legend-drop";
-    block.style.setProperty("--drop-color", row.color);
-    item.append(block, `${row.name} drop`);
-    elements.chartLegend.append(item);
+    for (const stateName of ["available", "dropped"]) {
+      const item = document.createElement("span");
+      const block = document.createElement("i");
+      block.className = `legend-feature is-${stateName}`;
+      block.style.setProperty("--feature-color", row.color);
+      item.append(block, `${row.name} feature ${stateName}`);
+      elements.chartLegend.append(item);
+    }
   }
 }
 
@@ -303,8 +305,10 @@ function drawDropRows(width, layout) {
   context.textBaseline = "middle";
   rows.forEach((row, rowIndex) => {
     const y = layout.stripTop + rowIndex * DROP_ROW_HEIGHT;
-    context.fillStyle = "#f0f0ed";
+    context.fillStyle = row.color;
+    context.globalAlpha = 0.22;
     context.fillRect(layout.margin.left, y, layout.plotRight - layout.margin.left, 11);
+    context.globalAlpha = 1;
     context.fillStyle = row.color;
     context.fillText(row.label, layout.margin.left - 8, y + 5.5);
     context.globalAlpha = 0.9;
