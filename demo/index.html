@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive TSMD robustness demos for multimodal video summarization">
+  <title>TSMD Robustness Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell" aria-labelledby="page-title">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow" id="page-eyebrow">Interactive evaluation</p>
+        <h1 id="page-title">TSMD Robustness Demo</h1>
+      </div>
+      <div class="status-cluster">
+        <span class="drop-status" id="drop-status" data-dropped="false">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="drop-label">Frame retained</span>
+        </span>
+        <span class="time-chip" id="header-time">00:00 / --:--</span>
+      </div>
+    </header>
+
+    <section class="demo-navigation" aria-label="Demo selection">
+      <div class="tab-list" id="demo-tabs" role="tablist" aria-label="Choose a demo"></div>
+      <div class="demo-options">
+        <div class="video-picker" id="video-picker" role="group" aria-label="Choose a robustness example"></div>
+        <label class="switch-control" id="clean-toggle-wrap" hidden>
+          <input id="clean-toggle" type="checkbox" checked>
+          <span class="switch-track" aria-hidden="true"><span></span></span>
+          <span>Show clean inference</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="demo-summary" aria-live="polite">
+      <div>
+        <p class="section-kicker" id="demo-kicker">Current example</p>
+        <h2 id="demo-title">Loading demo</h2>
+      </div>
+      <p id="demo-description"></p>
+      <div class="metric-strip" id="metric-strip" hidden></div>
+    </section>
+
+    <section class="upper-grid" aria-label="Live salience and video">
+      <section class="salience-panel" aria-labelledby="salience-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Live scores</p>
+            <h2 id="salience-title">Current salience</h2>
+          </div>
+          <span class="score-scale">0-1 normalized</span>
+        </div>
+        <div class="meters" id="meters"></div>
+        <div class="reading-note">
+          <span>5 s centered mean</span>
+          <span>Seed 42</span>
+          <span>1 Hz scores</span>
+        </div>
+      </section>
+
+      <section class="video-panel" aria-labelledby="video-title">
+        <div class="video-heading">
+          <div>
+            <p class="section-kicker">Source video</p>
+            <h2 id="video-title">YouTube playback</h2>
+          </div>
+          <a class="video-id" id="video-source-link" href="#" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+        </div>
+        <div class="video-stage" id="video-stage">
+          <div class="consent-panel" id="consent-panel">
+            <p>Loading this video connects to YouTube and may allow Google to process device and playback data.</p>
+            <button class="consent-button" id="consent-button" type="button">Accept and load YouTube video</button>
+            <p class="consent-links"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></p>
+          </div>
+          <div id="youtube-player" hidden></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="transport" aria-label="Playback controls">
+      <button class="icon-button play-button" id="play-button" type="button" aria-label="Play YouTube video" disabled>
+        <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+        <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zm6 0h4v14h-4z"></path></svg>
+      </button>
+      <span class="transport-time" id="current-time">00:00</span>
+      <input class="seek-slider" id="seek-slider" type="range" min="0" max="1" value="0" step="0.01" aria-label="Seek video">
+      <span class="transport-time" id="duration-time">--:--</span>
+      <label class="speed-control" for="speed-select">
+        <span>Speed</span>
+        <select id="speed-select" aria-label="Playback speed" disabled><option value="1">1x</option></select>
+      </label>
+    </section>
+
+    <section class="chart-panel" aria-labelledby="chart-title">
+      <div class="chart-heading">
+        <div>
+          <p class="section-kicker">Timeline</p>
+          <h2 id="chart-title">Salience through playback</h2>
+        </div>
+        <div class="legend" id="chart-legend" aria-label="Chart legend"></div>
+      </div>
+      <button class="chart-resize-handle" id="chart-resize-handle" type="button" aria-label="Resize timeline chart" title="Drag up or down to resize; double-click to reset"><span aria-hidden="true"></span></button>
+      <div class="chart-wrap" id="chart-wrap">
+        <canvas id="salience-chart" role="img" aria-label="Progressively revealed salience score curves and modality drop masks. Click or drag to seek the video."></canvas>
+        <div class="chart-tooltip" id="chart-tooltip" hidden></div>
+      </div>
+      <div class="chart-hint">Click or drag anywhere on the timeline to seek</div>
+    </section>
+
+    <p class="error-banner" id="error-banner" role="alert" hidden></p>
+    <footer class="site-footer">
+      <span>Videos are supplied by YouTube; scores are research outputs, not YouTube metrics.</span>
+      <nav aria-label="Legal and source links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a id="footer-video-link" href="#" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+        <a href="https://github.com/boyuan-ch/TSMD" target="_blank" rel="noopener noreferrer">Source code</a>
+      </nav>
+    </footer>
+  </main>
+  <script src="app.js?v=10" defer></script>
+</body>
+</html>

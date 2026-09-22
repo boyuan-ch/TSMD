@@ -154,6 +154,7 @@ standard deviations are reported in the paper.
 
 ```text
 TSMD/
+├── demo/                    # Zero-build interactive robustness website
 ├── configs/                 # MPR configurations for MoSu and Mr. HiSum
 ├── experiments/             # Training instrumentation used by the solver
 ├── models/                  # TripleSumm backbone and prediction heads
