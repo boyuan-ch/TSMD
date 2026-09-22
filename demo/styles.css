@@ -194,7 +194,7 @@ input:focus-visible,
 
 .demo-summary {
   display: grid;
-  grid-template-columns: minmax(180px, 0.7fr) minmax(260px, 1.3fr) auto;
+  grid-template-columns: minmax(140px, 0.25fr) minmax(0, 1fr);
   align-items: center;
   gap: 24px;
   padding: 16px 2px 0;
@@ -209,7 +209,7 @@ input:focus-visible,
 
 .metric-strip {
   display: grid;
-  grid-template-columns: repeat(4, minmax(72px, 1fr));
+  grid-template-columns: auto repeat(4, minmax(72px, 1fr));
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.65);
 }
@@ -226,10 +226,14 @@ input:focus-visible,
   border-right: 0;
 }
 
+.metric-definition {
+  background: #ecece8;
+}
+
 .metric-strip small {
   color: var(--muted);
   font-size: 0.61rem;
-  white-space: nowrap;
+  line-height: 1.35;
 }
 
 .metric-strip strong {
@@ -849,6 +853,13 @@ h2 {
 
   .metric-strip {
     width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .metric-definition {
+    grid-column: 1 / -1;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--line);
   }
 
   .salience-panel,
@@ -912,11 +923,12 @@ h2 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .metric-strip > span:nth-child(2) {
+  .metric-value:nth-of-type(odd) {
     border-right: 0;
   }
 
-  .metric-strip > span:nth-child(-n+2) {
+  .metric-value:nth-of-type(2),
+  .metric-value:nth-of-type(3) {
     border-bottom: 1px solid var(--line);
   }
 

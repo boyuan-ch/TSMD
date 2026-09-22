@@ -473,15 +473,20 @@ function renderMetrics() {
   elements.metricStrip.hidden = !metrics;
   elements.metricStrip.replaceChildren();
   if (!metrics) return;
+  const metricDefinition = document.createElement("span");
+  metricDefinition.className = "metric-definition";
+  metricDefinition.innerHTML = "<small>Evaluation metric</small><strong>mAP@15</strong>";
+  elements.metricStrip.append(metricDefinition);
   const items = [
-    ["TripleSumm (Baseline) clean", metrics.triplesummClean.mAP15, true],
-    ["TripleSumm (Baseline) drop", metrics.triplesummDrop.mAP15, false],
-    ["TSMD-Mix (Ours) clean", metrics.tsmdMixClean.mAP15, true],
-    ["TSMD-Mix (Ours) drop", metrics.tsmdMixDrop.mAP15, false],
+    ["TripleSumm (Baseline) evaluated on clean video", metrics.triplesummClean.mAP15, true],
+    ["TripleSumm (Baseline) evaluated on corrupted video", metrics.triplesummDrop.mAP15, false],
+    ["TSMD-Mix (Ours) evaluated on clean video", metrics.tsmdMixClean.mAP15, true],
+    ["TSMD-Mix (Ours) evaluated on corrupted video", metrics.tsmdMixDrop.mAP15, false],
   ];
   for (const [label, value, clean] of items) {
     if (clean && !state.showClean) continue;
     const item = document.createElement("span");
+    item.className = "metric-value";
     item.innerHTML = `<small>${label}</small><strong>${value.toFixed(1)}</strong>`;
     elements.metricStrip.append(item);
   }
